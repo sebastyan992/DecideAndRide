@@ -1,7 +1,11 @@
 package edu.wsb.students.model;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.Currency;
 
@@ -14,37 +18,15 @@ public class Car {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "brand")
     private String brand;
-
-    @Column(name = "model")
     private String model;
-
-    @Column(name = "hp")
     private int hp;
-
-    @Column(name = "engineCapacity")
     private String engineCapacity;
-
-    @Column(name = "prodYear")
     private int prodYear;
-
-    @Column(name = "VIN")
-    private String VIN;
-
-    @Column(name = "insuranceDate")
-    private LocalDateTime insuraceDate;
-
-    @Column(name = "technicalInspection")
+    private String vin;
+    private LocalDateTime insuranceDate;
     private String technicalInspection;
-
-    @Column(name = "priceDay")
     private Currency priceDay;
-
-    @Column(name = "priceMonth")
-    private Currency priceMonth;
-
-    @Column(name = "rate")
     private String rate;
 
     public int getId() {
@@ -95,20 +77,20 @@ public class Car {
         this.prodYear = prodYear;
     }
 
-    public String getVIN() {
-        return VIN;
+    public String getVin() {
+        return vin;
     }
 
-    public void setVIN(String VIN) {
-        this.VIN = VIN;
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 
-    public LocalDateTime getInsuraceDate() {
-        return insuraceDate;
+    public LocalDateTime getInsuranceDate() {
+        return insuranceDate;
     }
 
-    public void setInsuraceDate(LocalDateTime insuraceDate) {
-        this.insuraceDate = insuraceDate;
+    public void setInsuranceDate(LocalDateTime insuranceDate) {
+        this.insuranceDate = insuranceDate;
     }
 
     public String getTechnicalInspection() {
@@ -125,14 +107,6 @@ public class Car {
 
     public void setPriceDay(Currency priceDay) {
         this.priceDay = priceDay;
-    }
-
-    public Currency getPriceMonth() {
-        return priceMonth;
-    }
-
-    public void setPriceMonth(Currency priceMonth) {
-        this.priceMonth = priceMonth;
     }
 
     public String getRate() {
