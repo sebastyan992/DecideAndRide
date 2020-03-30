@@ -10,32 +10,8 @@ public class Customer {
     private String drivingLicenceId;
     private LocalDate drivingLicenceExpirationDate;
     private LocalDate birthDate;
-    private String adress;
-    private int phoneNumber;
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    private String address;
+    private String phoneNumber;
 
     public String getName() {
         return name;
@@ -53,20 +29,20 @@ public class Customer {
         this.documentId = documentId;
     }
 
-    public String getDrivingLicenceId() {
-        return drivingLicenceId;
-    }
-
-    public void setDrivingLicenceId(String drivingLicenceId) {
-        this.drivingLicenceId = drivingLicenceId;
-    }
-
     public LocalDate getDocumentExpirationDate() {
         return documentExpirationDate;
     }
 
     public void setDocumentExpirationDate(LocalDate documentExpirationDate) {
         this.documentExpirationDate = documentExpirationDate;
+    }
+
+    public String getDrivingLicenceId() {
+        return drivingLicenceId;
+    }
+
+    public void setDrivingLicenceId(String drivingLicenceId) {
+        this.drivingLicenceId = drivingLicenceId;
     }
 
     public LocalDate getDrivingLicenceExpirationDate() {
@@ -76,4 +52,29 @@ public class Customer {
     public void setDrivingLicenceExpirationDate(LocalDate drivingLicenceExpirationDate) {
         this.drivingLicenceExpirationDate = drivingLicenceExpirationDate;
     }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
 }
