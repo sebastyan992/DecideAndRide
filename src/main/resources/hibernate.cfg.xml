@@ -12,5 +12,8 @@
         <property name="dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
         <property name="hbm2ddl.auto">update</property>
 
+        <!-- Mapping files -->
+        <mapping class="edu.wsb.students.model.Car"/>
+
     </session-factory>
 </hibernate-configuration>
