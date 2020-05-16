@@ -14,6 +14,7 @@
 
         <!-- Mapping files -->
         <mapping class="edu.wsb.students.model.Car"/>
+        <mapping class="edu.wsb.students.model.Customer"/>
 
     </session-factory>
 </hibernate-configuration>
