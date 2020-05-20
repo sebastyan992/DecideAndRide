@@ -1,8 +1,17 @@
 package edu.wsb.students;
 
+import edu.wsb.students.dao.OrderDao;
+import edu.wsb.students.model.Car;
+import edu.wsb.students.model.Customer;
+import edu.wsb.students.model.Order;
+
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 class Controller {
+
+    private OrderDao orderDao = new OrderDao();
 
     private boolean doAction = true;
 
@@ -33,6 +42,7 @@ class Controller {
         System.out.print("Enter option: ");
 
         scanner = new Scanner(System.in);
+
         String option = scanner.nextLine();
 
         System.out.println();
@@ -79,7 +89,21 @@ class Controller {
     }
 
     private void addOrder() {
-        // TODO
+        int customerId, carId;
+
+        System.out.print("Enter customer id: ");
+        customerId = scanner.nextInt();
+
+        System.out.print("Enter car id: ");
+        carId = scanner.nextInt();
+
+        Car car = new Car();
+        car.setId(carId);
+
+        Customer customer = new Customer();
+        customer.setId(customerId);
+
+        orderDao.addOrder(new Order(LocalDate.now(), 0, car, customer));
     }
 
     private void getAllCars() {
@@ -91,7 +115,13 @@ class Controller {
     }
 
     private void getAllOrders() {
-        // TODO
+        List<Order> orders = orderDao.getAllOrders();
+        if (orders.isEmpty()) {
+            System.out.println("No any orders\n");
+        }
+        for (Order order : orders) {
+            System.out.println("\t" + order.toString());
+        }
     }
 
     private void deleteCar() {
@@ -103,7 +133,12 @@ class Controller {
     }
 
     private void deleteOrder() {
-        // TODO
+        int orderId;
+
+        System.out.print("Enter order id: ");
+        orderId = scanner.nextInt();
+
+        orderDao.deleteOrder(orderId);
     }
 
 }
