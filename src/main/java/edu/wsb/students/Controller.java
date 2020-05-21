@@ -1,16 +1,19 @@
 package edu.wsb.students;
 
+import edu.wsb.students.dao.CarDao;
 import edu.wsb.students.dao.OrderDao;
 import edu.wsb.students.model.Car;
 import edu.wsb.students.model.Customer;
 import edu.wsb.students.model.Order;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 class Controller {
 
+    private CarDao carDao = new CarDao();
     private OrderDao orderDao = new OrderDao();
 
     private boolean doAction = true;
@@ -81,7 +84,43 @@ class Controller {
     }
 
     private void addCar() {
-        // TODO
+        System.out.print("Enter brand of car(string): ");
+        String brand = scanner.nextLine();
+
+        System.out.print("Enter model of car(string): ");
+        String model = scanner.nextLine();
+
+        System.out.print("Enter horse power(int): ");
+        int horsePower = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Enter engine capacity(string): ");
+        String engineCapacity = scanner.nextLine();
+
+        System.out.print("Enter production year(int): ");
+        int productionYear = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Enter vin number(string): ");
+        String vinNumber = scanner.nextLine();
+
+        System.out.print("Enter insurance date(YYYY-MM-DD): ");
+        LocalDate insuranceDate = LocalDate.parse(scanner.nextLine());
+
+        System.out.print("Enter technical inspection date(YYYY-MM-DD): ");
+        LocalDate technicalInspectionDate = LocalDate.parse(scanner.nextLine());
+
+        System.out.print("Enter daily payment(double): ");
+        BigDecimal dailyPayment = BigDecimal.valueOf(Double.parseDouble(scanner.nextLine()));
+
+        System.out.print("Enter rate(string): ");
+        String rate = scanner.nextLine();
+
+        carDao.addCar(
+                new Car(
+                        brand, model, horsePower, engineCapacity,
+                        productionYear, vinNumber, insuranceDate, technicalInspectionDate,
+                        dailyPayment, rate
+                )
+        );
     }
 
     private void addCustomer() {
@@ -107,7 +146,15 @@ class Controller {
     }
 
     private void getAllCars() {
-        // TODO
+        List<Car> cars = carDao.getAllCars();
+        if (cars.isEmpty()) {
+            System.out.println("No any cars!\n");
+            System.out.println();
+            return;
+        }
+        for (Car car : cars) {
+            System.out.println("\t" + car.toString());
+        }
     }
 
     private void getAllCustomers() {
@@ -125,7 +172,12 @@ class Controller {
     }
 
     private void deleteCar() {
-        // TODO
+        int carId;
+
+        System.out.print("Enter car id: ");
+        carId = scanner.nextInt();
+
+        carDao.deleteCar(carId);
     }
 
     private void deleteCustomer() {
