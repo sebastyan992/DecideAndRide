@@ -1,6 +1,7 @@
 package edu.wsb.students;
 
 import edu.wsb.students.dao.CarDao;
+import edu.wsb.students.dao.CustomerDao;
 import edu.wsb.students.dao.OrderDao;
 import edu.wsb.students.model.Car;
 import edu.wsb.students.model.Customer;
@@ -14,6 +15,7 @@ import java.util.Scanner;
 class Controller {
 
     private CarDao carDao = new CarDao();
+    private CustomerDao customerDao = new CustomerDao();
     private OrderDao orderDao = new OrderDao();
 
     private boolean doAction = true;
@@ -124,7 +126,34 @@ class Controller {
     }
 
     private void addCustomer() {
-        // TODO
+        String name, documentId, drivingLicenceId, address, phoneNumber;
+        LocalDate documentExpirationDate, drivingLicenceExpirationDate, birthday;
+
+        System.out.print("Enter new customer`s name: ");
+        name = scanner.nextLine();
+
+        System.out.print("Enter document id: ");
+        documentId = scanner.nextLine();
+
+        System.out.print("Enter expiration date of document(YYYY-MM-DD): ");
+        documentExpirationDate = LocalDate.parse(scanner.nextLine());
+
+        System.out.print("Enter driver license id: ");
+        drivingLicenceId = scanner.nextLine();
+
+        System.out.print("Enter expiration date of driving licence(YYYY-MM-DD): ");
+        drivingLicenceExpirationDate = LocalDate.parse(scanner.nextLine());
+
+        System.out.print("Enter birthday(YYYY-MM-DD): ");
+        birthday = LocalDate.parse(scanner.nextLine());
+
+        System.out.print("Enter address: ");
+        address = scanner.nextLine();
+
+        System.out.print("Enter phone number: ");
+        phoneNumber = scanner.nextLine();
+
+        customerDao.addCustomer(new Customer(name, documentId, documentExpirationDate, drivingLicenceId, drivingLicenceExpirationDate, birthday, address, phoneNumber));
     }
 
     private void addOrder() {
@@ -158,7 +187,13 @@ class Controller {
     }
 
     private void getAllCustomers() {
-        // TODO
+        List<Customer> customers = customerDao.getAllCustomers();
+        if (customers.isEmpty()) {
+            System.out.println("No any customers!\n");
+        }
+        for (Customer customer : customers) {
+            System.out.println("\t" + customer.toString());
+        }
     }
 
     private void getAllOrders() {
@@ -181,7 +216,12 @@ class Controller {
     }
 
     private void deleteCustomer() {
-        // TODO
+        int customerId;
+
+        System.out.print("Enter customer id: ");
+        customerId = scanner.nextInt();
+
+        customerDao.deleteCustomer(customerId);
     }
 
     private void deleteOrder() {
