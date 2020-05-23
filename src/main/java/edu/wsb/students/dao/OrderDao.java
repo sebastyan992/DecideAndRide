@@ -34,6 +34,7 @@ public class OrderDao {
         List<Order> orders = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
+            session.beginTransaction();
             orders = session.createQuery("from Order", Order.class).getResultList();
         } catch (RuntimeException e) {
             e.printStackTrace();
