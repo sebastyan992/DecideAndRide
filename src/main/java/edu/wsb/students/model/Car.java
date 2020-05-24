@@ -156,4 +156,19 @@ public class Car {
         this.rate = rate;
     }
 
+    @Override
+    public String toString() {
+        return "id: " + id + '\n' +
+               "\tbrand: " + brand + '\n' +
+               "\tmodel: " + model + '\n' +
+               "\thorsePower: " + horsePower + '\n' +
+               "\tengineCapacity: " + engineCapacity + '\n' +
+               "\tproductionYear: " + productionYear + '\n' +
+               "\tvinNumber: " + vinNumber + '\n' +
+               "\tinsuranceDate: " + insuranceDate + '\n' +
+               "\ttechnicalInspectionDate: " + technicalInspectionDate + '\n' +
+               "\tdailyPayment: " + dailyPayment + '\n' +
+               "\trate: " + rate;
+    }
+
 }
