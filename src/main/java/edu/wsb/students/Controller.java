@@ -9,6 +9,7 @@ import edu.wsb.students.model.Order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Scanner;
 
@@ -171,7 +172,7 @@ class Controller {
         Customer customer = new Customer();
         customer.setId(customerId);
 
-        orderDao.addOrder(new Order(LocalDate.now(), 0, car, customer));
+        orderDao.addOrder(new Order(LocalDate.now(), car, customer));
     }
 
     private void getAllCars() {
@@ -226,9 +227,19 @@ class Controller {
 
     private void deleteOrder() {
         int orderId;
-
         System.out.print("Enter order id: ");
         orderId = scanner.nextInt();
+
+        Order order = orderDao.getOrderById(orderId);
+        Car rentalCar = order.getRentalCar();
+
+        BigDecimal price = rentalCar.getDailyPayment();
+        LocalDate rentDate = order.getRentDate();
+
+        long daysInRent = ChronoUnit.DAYS.between(rentDate, LocalDate.now());
+        double total = daysInRent * price.doubleValue();
+
+        System.out.println("To pay: " + total);
 
         orderDao.deleteOrder(orderId);
     }
