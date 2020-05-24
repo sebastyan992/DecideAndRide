@@ -127,4 +127,17 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    @Override
+    public String toString() {
+        return "id: " + id + '\n' +
+                "\tname: " + name + '\n' +
+                "\tdocumentId: " + documentId + '\n' +
+                "\tdocumentExpirationDate: " + documentExpirationDate + '\n' +
+                "\tdrivingLicenceId: " + drivingLicenceId + '\n' +
+                "\tdrivingLicenceExpirationDate: " + drivingLicenceExpirationDate + '\n' +
+                "\tbirthday: " + birthday + '\n' +
+                "\taddress: " + address + '\n' +
+                "\tphoneNumber: " + phoneNumber + '\n';
+    }
+
 }
