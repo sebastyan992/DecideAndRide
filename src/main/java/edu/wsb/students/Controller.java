@@ -31,15 +31,15 @@ class Controller {
 
     private void writeHelpText() {
         System.out.println("\nEnter number:");
-        System.out.println("1  - add new car");
-        System.out.println("2  - add new customer");
-        System.out.println("3  - add new order");
-        System.out.println("4  - get all cars");
-        System.out.println("5  - get all customers");
-        System.out.println("6  - get all orders");
-        System.out.println("7  - delete car");
-        System.out.println("8  - delete customer");
-        System.out.println("9  - complete with order");
+        System.out.println("1 - add new car");
+        System.out.println("2 - add new customer");
+        System.out.println("3 - add new order");
+        System.out.println("4 - get all cars");
+        System.out.println("5 - get all customers");
+        System.out.println("6 - get all orders");
+        System.out.println("7 - delete car");
+        System.out.println("8 - delete customer");
+        System.out.println("9 - complete with order");
         System.out.println("0 - exit\n");
     }
 

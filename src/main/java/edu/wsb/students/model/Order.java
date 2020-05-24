@@ -32,6 +32,9 @@ public class Order {
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
+    public Order() {
+    }
+
     public Order(LocalDate rentDate, int price, Car rentalCar, Customer customer) {
         this.rentDate = rentDate;
         this.price = price;
@@ -77,6 +80,15 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id + '\n' +
+               "\trentDate: " + rentDate + '\n' +
+               "\tprice: " + price + '\n' +
+               "\trentalCarId: " + rentalCar.getId() + '\n' +
+               "\tcustomerId: " + customer.getId() + '\n';
     }
 
 }
