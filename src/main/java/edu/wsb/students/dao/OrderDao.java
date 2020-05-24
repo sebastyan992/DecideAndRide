@@ -45,6 +45,21 @@ public class OrderDao {
         return orders;
     }
 
+    public Order getOrderById(int id) {
+        Order order = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            order = session.get(Order.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return order;
+    }
+
     public void deleteOrder(int orderId) {
         Transaction transaction = null;
         try {

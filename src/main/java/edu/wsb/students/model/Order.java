@@ -22,8 +22,6 @@ public class Order {
     @Column(name = "rentDate")
     private LocalDate rentDate;
 
-    private int price;
-
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car rentalCar;
@@ -35,9 +33,8 @@ public class Order {
     public Order() {
     }
 
-    public Order(LocalDate rentDate, int price, Car rentalCar, Customer customer) {
+    public Order(LocalDate rentDate, Car rentalCar, Customer customer) {
         this.rentDate = rentDate;
-        this.price = price;
         this.rentalCar = rentalCar;
         this.customer = customer;
     }
@@ -56,14 +53,6 @@ public class Order {
 
     public void setRentDate(LocalDate rentDate) {
         this.rentDate = rentDate;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public Car getRentalCar() {
@@ -86,7 +75,6 @@ public class Order {
     public String toString() {
         return "id: " + id + '\n' +
                "\trentDate: " + rentDate + '\n' +
-               "\tprice: " + price + '\n' +
                "\trentalCarId: " + rentalCar.getId() + '\n' +
                "\tcustomerId: " + customer.getId() + '\n';
     }
