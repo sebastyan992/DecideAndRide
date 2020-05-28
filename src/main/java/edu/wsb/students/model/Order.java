@@ -76,7 +76,7 @@ public class Order {
         return "id: " + id + '\n' +
                "\trentDate: " + rentDate + '\n' +
                "\trentalCarId: " + rentalCar.getId() + '\n' +
-               "\tcustomerId: " + customer.getId() + '\n';
+               "\tcustomerId: " + customer.getId();
     }
 
 }

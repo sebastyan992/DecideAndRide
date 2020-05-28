@@ -31,7 +31,7 @@ class Controller {
     }
 
     private void writeHelpText() {
-        System.out.println("\nEnter number:");
+        System.out.println("Enter number:");
         System.out.println("1 - add new car");
         System.out.println("2 - add new customer");
         System.out.println("3 - add new order");
@@ -50,8 +50,6 @@ class Controller {
         scanner = new Scanner(System.in);
 
         String option = scanner.nextLine();
-
-        System.out.println();
 
         switch (option){
             case "1":
@@ -183,7 +181,7 @@ class Controller {
             return;
         }
         for (Car car : cars) {
-            System.out.println("\t" + car.toString());
+            System.out.println("\t" + car.toString() + "\n");
         }
     }
 
@@ -193,17 +191,17 @@ class Controller {
             System.out.println("No any customers!\n");
         }
         for (Customer customer : customers) {
-            System.out.println("\t" + customer.toString());
+            System.out.println("\t" + customer.toString() + "\n");
         }
     }
 
     private void getAllOrders() {
         List<Order> orders = orderDao.getAllOrders();
         if (orders.isEmpty()) {
-            System.out.println("No any orders\n");
+            System.out.println("No any orders!\n");
         }
         for (Order order : orders) {
-            System.out.println("\t" + order.toString());
+            System.out.println("\t" + order.toString() + "\n");
         }
     }
 
@@ -236,7 +234,7 @@ class Controller {
         BigDecimal price = rentalCar.getDailyPayment();
         LocalDate rentDate = order.getRentDate();
 
-        long daysInRent = ChronoUnit.DAYS.between(rentDate, LocalDate.now());
+        long daysInRent = ChronoUnit.DAYS.between(rentDate, LocalDate.now()) + 1;
         double total = daysInRent * price.doubleValue();
 
         System.out.println("To pay: " + total);
