@@ -137,7 +137,7 @@ public class Customer {
                 "\tdrivingLicenceExpirationDate: " + drivingLicenceExpirationDate + '\n' +
                 "\tbirthday: " + birthday + '\n' +
                 "\taddress: " + address + '\n' +
-                "\tphoneNumber: " + phoneNumber + '\n';
+                "\tphoneNumber: " + phoneNumber;
     }
 
 }
